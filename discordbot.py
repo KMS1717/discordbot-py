@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 import os
 load_dotenv()
 
-PREFIX = os.environ['!']
+PREFIX = os.environ['$']
 TOKEN = os.environ['MTIzOTA0OTY1NjEzOTI1MTczMw.G5SXUw.75nuzL5uVmp4nXaRdsAaTrx6uDWahrLBd_-gTuc']
 
 client = discord.Client()
