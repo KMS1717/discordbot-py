@@ -21,12 +21,8 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    if message.content == '!call':
-        await message.channel.send("callback!")
-
-    if message.content.startswith('!hello'):
-        await message.channel.send('Hello!')
-
+    if message.content.startswith('!인사함박아봐라'):
+        await message.channel.send('안녕하십니꺼행님트위치대표개쌉미남렘우니인사오지게박습니다!')
 
 try:
     client.run('MTIzOTA0OTY1NjEzOTI1MTczMw.Gk7NX6.xHTePiLkalhcVTezfvH77dwRC0igN97PzwkH_k')
