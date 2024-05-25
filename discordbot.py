@@ -4,7 +4,8 @@ from dotenv import load_dotenv
 import os
 load_dotenv()
 
-TOKEN = os.getenv('MTIzOTA0OTY1NjEzOTI1MTczMw.G5SXUw.75nuzL5uVmp4nXaRdsAaTrx6uDWahrLBd_-gTuc')
+#discord_token = 'MTIzOTA0OTY1NjEzOTI1MTczMw.G5SXUw.75nuzL5uVmp4nXaRdsAaTrx6uDWahrLBd_-gTuc'
+#TOKEN = os.getenv(discord_token)
 
 intents = discord.Intents.default()
 intents.messages = True
@@ -28,7 +29,7 @@ async def on_message(message):
 
 
 try:
-    client.run(TOKEN)
+    client.run('MTIzOTA0OTY1NjEzOTI1MTczMw.G5SXUw.75nuzL5uVmp4nXaRdsAaTrx6uDWahrLBd_-gTuc')
 except discord.errors.LoginFailure as e:
     print("Improper token has been passed.")
 
