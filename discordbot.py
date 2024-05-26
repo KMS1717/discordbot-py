@@ -54,7 +54,9 @@ async def check_broad_period():
                 channelName = content_data.get('channel').get('channelName')
 
                 text_message = f'[치지직 라이브] {channelName}님의 방송이 시작되었습니다 !\n▶ 방송 제목: {title}\nhttps://chzzk.naver.com/live/{channel_id}'
-                #channel.send(text_message)
+                
+                print(text_message)
+                embedPop(channelName,title,chzzk_url)
 
                 while check_naver_status().get('status') == 'OPEN':
                     print("현재 방송중입니다.")
@@ -66,6 +68,15 @@ async def check_broad_period():
             print("방송 정보를 가져오지 못했습니다.")
         
         await asyncio.sleep(10)
+
+#방송알림을 예쁜형식으로 보여주기
+async def embedPop(streamer_name, stream_title, stream_url):
+    channel = client.get_channel(CHANNEL_ID)
+    embed = discord.Embed(title=f"{streamer_name} 방송 시작!", description=stream_title, color=discord.Color.green())
+    embed.add_field(name="시작한 스트리머", value=streamer_name, inline=False)
+    embed.add_field(name="방송 제목", value=stream_title, inline=False)
+    embed.add_field(name="시청 링크", value=f"[여기에서 시청하기]({stream_url})", inline=False)
+    await channel.send(embed=embed)
 
 @client.event
 async def on_ready():
