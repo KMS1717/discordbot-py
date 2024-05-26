@@ -24,7 +24,7 @@ chzzk_url = f'https://api.chzzk.naver.com/service/v2/channels/{broad_id}/live-de
 
 print("api통신시작")
 
-async def check_naver_status():
+def check_naver_status():
     response = requests.get(chzzk_url,headers={"User-Agent":"Mozilla/5.0"})
     
     #전송성공이면
