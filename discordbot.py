@@ -13,7 +13,6 @@ CHANNEL_ID = int(os.getenv('CHANNEL_ID')) #디스코드 채널명
 
 intents = discord.Intents.default()
 intents.messages = True
-intents.message_content = True
 
 client = discord.Client(intents=intents)
 
