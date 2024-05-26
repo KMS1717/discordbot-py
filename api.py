@@ -39,7 +39,7 @@ def check_broad_period():
         content_data = check_naver_status()
 
         #reponse json 출력
-        print(datetime.today().strftime("%Y%m%d%H%M%S")+" "+content_data.get('liveTitle')+","+content_data.get('channelName'))
+        print(datetime.today().strftime("%Y/%m/%d %H:%M:%S")+" "+content_data.get('liveTitle'))
         #print(content_data)
 
         #만약 현재 방송중이라면
