@@ -24,14 +24,18 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    if message.content.startswith('!인사함박아봐라'):
+    #!인사 명령어
+    if message.content.startswith('!인사'):
         await message.channel.send('안녕하십니꺼행님치지직대표개쌉미남렘우니인사오지게박습니다!')
 
+    #easterEgg
     if message.content.startswith('호치~'):
         await message.channel.send('아흣!')
 
+    #!방송알림 시작 명령어        
+    if message.content.startswith('!방송알림 시작'):
+        api.check_broad_period()
 try:
     client.run('MTIzOTA0OTY1NjEzOTI1MTczMw.Gk7NX6.xHTePiLkalhcVTezfvH77dwRC0igN97PzwkH_k')
-    api.check_broad_period()
 except discord.errors.LoginFailure as e:
     print("Improper token has been passed.")
