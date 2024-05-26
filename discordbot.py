@@ -17,7 +17,7 @@ client = discord.Client(intents=intents)
 @client.event
 async def on_ready():
     print(f'Logged in as {client.user}.')
-    api.check_broad_period()
+    #api.check_broad_period()
 
 @client.event
 async def on_message(message):
@@ -32,6 +32,6 @@ async def on_message(message):
 
 try:
     client.run('MTIzOTA0OTY1NjEzOTI1MTczMw.Gk7NX6.xHTePiLkalhcVTezfvH77dwRC0igN97PzwkH_k')
+    api.check_broad_period()
 except discord.errors.LoginFailure as e:
     print("Improper token has been passed.")
-

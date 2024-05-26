@@ -1,6 +1,8 @@
 #api.py
 import requests
 import time
+import discord
+from datetime import datetime
 
 #url = 'https://api.chzzk.naver.com/service/v2/channels/b044e3a3b9259246bc92e863e7d3f3b8/live-detail'
 #response = requests.get(url,headers={"User-Agent":"Mozilla/5.0"})
@@ -13,11 +15,12 @@ import time
 #else:
 #    print("Request failed with status code:", response.status_code)
 
-#채널아이디
-channel_id = '319304cac96c224bd574b4ed930970e3'
+#방송아이디
+broad_id = '319304cac96c224bd574b4ed930970e3'
+channel_id = '1240332570474840115'
 
 #api_url
-chzzk_url = f'https://api.chzzk.naver.com/service/v2/channels/{channel_id}/live-detail'
+chzzk_url = f'https://api.chzzk.naver.com/service/v2/channels/{broad_id}/live-detail'
 
 def check_naver_status():
     response = requests.get(chzzk_url,headers={"User-Agent":"Mozilla/5.0"})
@@ -36,15 +39,16 @@ def check_broad_period():
         content_data = check_naver_status()
 
         #reponse json 출력
-        print(content_data)
+        print(datetime.today().strftime("%Y%m%d%H%M%S")+" "+content_data.get('liveTitle')+","+content_data.get('channelName'))
+        #print(content_data)
 
         #만약 현재 방송중이라면
         if content_data.get('status') == 'OPEN':
 
             title = content_data.get('liveTitle')
-            channel = content_data.get('channel').get('channelName')
+            channelName = content_data.get('channel').get('channelName')
 
-            text_message = f'[치지직 라이브] {channel}님의 방송이 시작되었습니다 !\n▶ 방송 제목: {title}\nhttps://chzzk.naver.com/live/{channel_id}'
+            text_message = f'[치지직 라이브] {channelName}님의 방송이 시작되었습니다 !\n▶ 방송 제목: {title}\nhttps://chzzk.naver.com/live/{channel_id}'
             #channel.send(text_message)
 
             while check_naver_status().get('status') == 'OPEN':
