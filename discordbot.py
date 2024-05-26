@@ -18,7 +18,7 @@ client = discord.Client(intents=intents)
 async def on_ready():
     print(f'Logged in as {client.user}.')
 
-    api.check_broad_period()
+    await api.check_broad_period()
 
 @client.event
 async def on_message(message):
