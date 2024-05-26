@@ -38,7 +38,6 @@ def check_naver_status():
 async def check_broad_period():
     # 봇이 준비될 때까지 대기
     await client.wait_until_ready() 
-    channel = client.get_channel(CHANNEL_ID)
 
     while not client.is_closed():
         content_data = check_naver_status()
@@ -60,7 +59,7 @@ async def check_broad_period():
 
                 while check_naver_status().get('status') == 'OPEN':
                     print("현재 방송중입니다.")
-                    time.sleep(30)
+                    asyncio.sleep(30)
             
             else:
                 print("현재 방송중이 아닙니다.")
