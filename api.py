@@ -45,7 +45,7 @@ def check_broad_period():
             channel = content_data.get('channel').get('channelName')
 
             text_message = f'[치지직 라이브] {channel}님의 방송이 시작되었습니다 !\n▶ 방송 제목: {title}\nhttps://chzzk.naver.com/live/{channel_id}'
-            channel.send(text_message)
+            #channel.send(text_message)
 
             while check_naver_status().get('status') == 'OPEN':
                 print("현재 방송중입니다.")
