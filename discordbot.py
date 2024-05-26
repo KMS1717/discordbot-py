@@ -3,7 +3,7 @@ from cmath import log
 import discord
 from dotenv import load_dotenv
 import os
-import api
+#import api
 load_dotenv()
 
 #discord_token = 'MTIzOTA0OTY1NjEzOTI1MTczMw.G5SXUw.75nuzL5uVmp4nXaRdsAaTrx6uDWahrLBd_-gTuc'
@@ -18,7 +18,7 @@ client = discord.Client(intents=intents)
 async def on_ready():
     print(f'Logged in as {client.user}')
 
-    await api.check_broad_period()
+    #await api.check_broad_period()
 
 @client.event
 async def on_message(message):

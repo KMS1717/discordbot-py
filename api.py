@@ -35,7 +35,7 @@ def check_naver_status():
         return None
 
 #Naver Chzzk 방송 상태 확인 function
-async def check_broad_period():
+def check_broad_period():
 
     while True:
         content_data = check_naver_status()
