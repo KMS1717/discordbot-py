@@ -17,7 +17,7 @@ client = discord.Client(intents=intents)
 @client.event
 async def on_ready():
     print(f'Logged in as {client.user}.')
-    #api.check_broad_period()
+    api.check_broad_period()
 
 @client.event
 async def on_message(message):
@@ -33,8 +33,8 @@ async def on_message(message):
         await message.channel.send('아흣!')
 
     #!방송알림 시작 명령어        
-    if message.content.startswith('!방송알림 시작'):
-        api.check_broad_period()
+    #if message.content.startswith('!방송알림 시작'):
+
 try:
     client.run('MTIzOTA0OTY1NjEzOTI1MTczMw.Gk7NX6.xHTePiLkalhcVTezfvH77dwRC0igN97PzwkH_k')
 except discord.errors.LoginFailure as e:
