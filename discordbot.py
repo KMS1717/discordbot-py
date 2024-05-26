@@ -1,7 +1,9 @@
+#main
 from cmath import log
 import discord
 from dotenv import load_dotenv
 import os
+import api
 load_dotenv()
 
 #discord_token = 'MTIzOTA0OTY1NjEzOTI1MTczMw.G5SXUw.75nuzL5uVmp4nXaRdsAaTrx6uDWahrLBd_-gTuc'
@@ -15,6 +17,7 @@ client = discord.Client(intents=intents)
 @client.event
 async def on_ready():
     print(f'Logged in as {client.user}.')
+    api.check_broad_period()
 
 @client.event
 async def on_message(message):
@@ -22,7 +25,7 @@ async def on_message(message):
         return
 
     if message.content.startswith('!인사함박아봐라'):
-        await message.channel.send('안녕하십니꺼행님트위치대표개쌉미남렘우니인사오지게박습니다!')
+        await message.channel.send('안녕하십니꺼행님치지직대표개쌉미남렘우니인사오지게박습니다!')
 
     if message.content.startswith('호치~'):
         await message.channel.send('아흣!')
