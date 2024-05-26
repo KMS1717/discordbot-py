@@ -55,7 +55,7 @@ async def check_broad_period():
                 text_message = f'[치지직 라이브] {channelName}님의 방송이 시작되었습니다 !\n▶ 방송 제목: {title}\nhttps://chzzk.naver.com/live/{channel_id}'
                 
                 print(text_message)
-                embedPop(channelName,title,chzzk_url)
+                await embedPop(channelName,title,chzzk_url)
 
                 while check_naver_status().get('status') == 'OPEN':
                     print("현재 방송중입니다.")
