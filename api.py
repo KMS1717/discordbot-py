@@ -24,7 +24,7 @@ chzzk_url = f'https://api.chzzk.naver.com/service/v2/channels/{broad_id}/live-de
 
 print("api통신시작")
 
-def check_naver_status():
+async def check_naver_status():
     response = requests.get(chzzk_url,headers={"User-Agent":"Mozilla/5.0"})
     
     #전송성공이면
@@ -35,7 +35,7 @@ def check_naver_status():
         return None
 
 #Naver Chzzk 방송 상태 확인 function
-def check_broad_period():
+async def check_broad_period():
 
     while True:
         content_data = check_naver_status()
