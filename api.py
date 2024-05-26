@@ -22,6 +22,8 @@ channel_id = '1240332570474840115'
 #api_url
 chzzk_url = f'https://api.chzzk.naver.com/service/v2/channels/{broad_id}/live-detail'
 
+print("api통신시작")
+
 def check_naver_status():
     response = requests.get(chzzk_url,headers={"User-Agent":"Mozilla/5.0"})
     
