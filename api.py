@@ -53,4 +53,4 @@ def check_broad_period():
         
         else:
             print("현재 방송중이 아닙니다.")
-            time.sleep(30)
+            time.sleep(10)
