@@ -59,7 +59,7 @@ async def check_broad_period():
 
                 while check_naver_status().get('status') == 'OPEN':
                     print("현재 방송중입니다.")
-                    asyncio.sleep(30)
+                    await asyncio.sleep(30)
             
             else:
                 print("현재 방송중이 아닙니다.")
