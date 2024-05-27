@@ -70,7 +70,7 @@ async def check_broad_period():
             print("방송 정보를 가져오지 못했습니다.")
         
         await asyncio.sleep(10)
-s
+
 #방송알림을 예쁜형식으로 보여주기
 async def embedPop(streamer_name, stream_title, liveCategoryValue, stream_url, image_url):
     channel = client.get_channel(CHANNEL_ID)
@@ -96,8 +96,12 @@ async def on_message(message):
         await message.channel.send('안녕하십니꺼행님치지직대표개쌉미남렘우니인사오지게박습니다!')
 
     #easterEgg
-    if message.content.startswith('호치~'):
-        await message.channel.send('아흣!')
+    #if message.content.startswith('호치~'):
+    #    await message.channel.send('아흣!')
+
+    #개발자 정보
+    if message.content.startswith('!dev'):
+        await message.channel.send('@개발자:KMS')
 
     #!방송알림 시작 명령어        
     #if message.content.startswith('!방송알림 시작'):
