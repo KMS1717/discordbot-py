@@ -17,7 +17,7 @@ intents.messages = True
 client = discord.Client(intents=intents)
 
 #방송아이디
-broad_id = '319304cac96c224bd574b4ed930970e3'
+broad_id = '343fc0e877aa8ca0cad5106b33d6fa95'
 channel_id = '1240332570474840115'
 
 #api_url
@@ -44,6 +44,7 @@ async def check_broad_period():
 
         if content_data:
             #reponse json 출력
+            print(content_data)
             print(datetime.today().strftime("%Y/%m/%d %H:%M:%S")+" "+content_data.get('liveTitle'))
 
             #만약 현재 방송중이라면
@@ -51,11 +52,13 @@ async def check_broad_period():
 
                 title = content_data.get('liveTitle')
                 channelName = content_data.get('channel').get('channelName')
+                image_url = content_data.get('channel').get('channelImageUrl').replace('_{type}','_1080')
+                liveCategoryValue = content_data.get('liveCategoryValue')
 
-                text_message = f'[치지직 라이브] {channelName}님의 방송이 시작되었습니다 !\n▶ 방송 제목: {title}\nhttps://chzzk.naver.com/live/{channel_id}'
+                text_message = f'[치지직 라이브] {channelName}님의 방송이 시작되었습니다 !\n▶ 방송 제목: {title}\nhttps://chzzk.naver.com/live/{broad_id}'
                 
                 print(text_message)
-                await embedPop(channelName,title,chzzk_url)
+                await embedPop(channelName,title,liveCategoryValue,chzzk_url,image_url)
 
                 while check_naver_status().get('status') == 'OPEN':
                     print("현재 방송중입니다.")
@@ -67,12 +70,13 @@ async def check_broad_period():
             print("방송 정보를 가져오지 못했습니다.")
         
         await asyncio.sleep(10)
-
+s
 #방송알림을 예쁜형식으로 보여주기
-async def embedPop(streamer_name, stream_title, stream_url):
+async def embedPop(streamer_name, stream_title, liveCategoryValue, stream_url, image_url):
     channel = client.get_channel(CHANNEL_ID)
     embed = discord.Embed(title=f"{streamer_name} 방송 시작!", description=stream_title, color=discord.Color.green())
-    embed.add_field(name="시작한 스트리머", value=streamer_name, inline=False)
+    embed.set_image(url=image_url)
+    embed.add_field(name="카테고리", value=liveCategoryValue,inline=False)
     embed.add_field(name="방송 제목", value=stream_title, inline=False)
     embed.add_field(name="시청 링크", value=f"[여기에서 시청하기]({stream_url})", inline=False)
     await channel.send(embed=embed)
