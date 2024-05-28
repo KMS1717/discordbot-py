@@ -13,11 +13,15 @@ CHANNEL_ID = int(os.getenv('CHANNEL_ID')) #디스코드 채널명
 
 intents = discord.Intents.default()
 intents.messages = True
+
+#배포가 아닌 IDE에서 직접 디버깅하는 경우엔 
+#아래 세팅의 주석을 풀어주어야 메시지 입력시 on_message 메소드가 동작한다.
 #intents.message_content = True
 
 client = discord.Client(intents=intents)
 
 #방송아이디
+#broad_id = '48d4cd798a75938030815edbada92452'
 broad_id = 'ec857bee6cded06df19dae85cf37f878'
 channel_id = '1240332570474840115'
 
@@ -84,7 +88,7 @@ async def embedPop(streamer_name, stream_title, liveCategoryValue, stream_url, i
     embed.add_field(name="카테고리", value=liveCategoryValue,inline=False)
     #embed.add_field(name="방송 제목", value=stream_title, inline=False)
     embed.add_field(name="시청 링크", value=f"[여기에서 시청하기]({stream_url})", inline=False)
-    await channel.send(embed=embed)
+    await channel.send(embed=embed,content="@everyone")
 
 @client.event
 async def on_ready():
