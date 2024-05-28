@@ -8,8 +8,9 @@ import asyncio
 import datetime
 load_dotenv('token.env')
 
-DISCORD_TOKEN = os.getenv('DISCORD_TOKEN')
+DISCORD_TOKEN = os.getenv('DISCORD_TOKEN') #디스코드 토큰
 CHANNEL_ID = int(os.getenv('CHANNEL_ID')) #디스코드 채널명
+BROAD_ID = os.getenv('BROAD_ID') #방송아이디
 
 intents = discord.Intents.default()
 intents.messages = True
@@ -20,16 +21,11 @@ intents.messages = True
 
 client = discord.Client(intents=intents)
 
-#방송아이디
-#broad_id = '48d4cd798a75938030815edbada92452'
-broad_id = 'ec857bee6cded06df19dae85cf37f878'
-channel_id = '1240332570474840115'
-
 #api_url
-chzzk_url = f'https://api.chzzk.naver.com/service/v2/channels/{broad_id}/live-detail'
+chzzk_url = f'https://api.chzzk.naver.com/service/v2/channels/{BROAD_ID}/live-detail'
 
 #live_url
-live_url = f'https://chzzk.naver.com/live/{broad_id}'
+live_url = f'https://chzzk.naver.com/live/{BROAD_ID}'
 
 
 #api 통신
@@ -64,7 +60,7 @@ async def check_broad_period():
                 image_url = (content_data.get('liveImageUrl') or content_data.get('channel').get('channelImageUrl') or "").replace('_{type}','_1080')
                 liveCategoryValue = content_data.get('liveCategoryValue')
 
-                text_message = f'[치지직 라이브] {channelName}님의 방송이 시작되었습니다 !\n▶ 방송 제목: {title}\nhttps://chzzk.naver.com/live/{broad_id}'
+                text_message = f'[치지직 라이브] {channelName}님의 방송이 시작되었습니다 !\n▶ 방송 제목: {title}\nhttps://chzzk.naver.com/live/{BROAD_IDs}'
                 
                 print(text_message)
                 await embedPop(channelName,title,liveCategoryValue,live_url,image_url)
